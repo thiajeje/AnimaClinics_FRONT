@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Container } from "./styles";
+import { Input } from "components";
 
 function Login() {
   const [loading, setLoading] = useState(false);
@@ -31,6 +33,10 @@ function Login() {
         codigo_conselho,
       });
       setLoading(false);
+      toast.success("Veículo criado com sucesso", {
+        position: toast.POSITION.TOP_RIGHT,
+        theme: "colored",
+      });
     } catch (error) {
       alert("erro na requisição");
       setLoading(false);
@@ -38,63 +44,63 @@ function Login() {
   };
 
   return (
-    <div>
+    <Container>
       <h1>Cadastro de usuários</h1>
-      <input
+      <Input
         type="text"
         value={nome}
         placeholder="Nome completo"
         onChange={(e) => setNome(e.target.value)}
       />
-      <input
+      <Input
         type="text"
         value={cpf}
         placeholder="CPF"
         onChange={(e) => setCpf(e.target.value)}
       />
-      <input
+      <Input
         type="text"
         value={curso}
         placeholder="Curso"
         onChange={(e) => setCurso(e.target.value)}
       />
-      <input
+      <Input
         type="text"
         value={ra}
         placeholder="RA"
         onChange={(e) => setRa(e.target.value)}
       />
-      <input
+      <Input
         type="text"
         value={endereco}
         placeholder="Endereço"
         onChange={(e) => setEndereco(e.target.value)}
       />
-      <input
+      <Input
         type="text"
         value={cep}
         placeholder="CEP"
         onChange={(e) => setCep(e.target.value)}
       />
-      <input
+      <Input
         type="text"
         value={telefone}
         placeholder="Telefone"
         onChange={(e) => setTelefone(e.target.value)}
       />
-      <input
+      <Input
         type="text"
         value={email}
         placeholder="E-mail"
         onChange={(e) => setEmail(e.target.value)}
       />
-      <input
+      <Input
         type="text"
         value={profissao}
         placeholder="Profissão"
         onChange={(e) => setProfissao(e.target.value)}
       />
-      <input
+      <Input
         type="text"
         value={codigo_conselho}
         placeholder="Codigo"
@@ -102,7 +108,7 @@ function Login() {
       />
 
       <button onClick={handleAdd}>Enviar</button>
-    </div>
+    </Container>
   );
 }
 

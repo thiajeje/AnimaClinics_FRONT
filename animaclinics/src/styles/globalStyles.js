@@ -1,19 +1,23 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
-
-* {
-    padding:0;
-    margin:0;
-    vertical-align:baseline;
-    list-style:none;
-    border:0
-}
-    body{
-        font-size: 100%;
-        list-style-type: none;
-        font-family: 'Roboto', sans-serif;
-    }
-`
-
-export default GlobalStyle;
+export const GlobalStyle = createGlobalStyle`
+  html{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    max-width: 100% !important;
+  }
+  body {
+    font-family: 'Nunito', sans-serif;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background: EBEFF2;
+    object-fit: cover;
+    background-size: cover;
+    background-size: auto;
+    background-attachment: fixed;
+  
+  }
+`;
