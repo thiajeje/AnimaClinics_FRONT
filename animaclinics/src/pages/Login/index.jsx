@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Container } from "./styles";
-import { Input } from "components";
+import { Container, Grid } from "./styles";
+import { Button, Input } from "components";
 
 function Login() {
   const [loading, setLoading] = useState(false);
@@ -49,68 +49,81 @@ function Login() {
   return (
     <Container>
       <h1>Cadastro de usuários</h1>
-      <Input
-        type="text"
-        value={nome}
-        placeholder="Nome completo"
-        onChange={(e) => setNome(e.target.value)}
-      />
-      <Input
-        type="text"
-        value={cpf}
-        placeholder="CPF"
-        onChange={(e) => setCpf(e.target.value)}
-      />
-      <Input
-        type="text"
-        value={curso}
-        placeholder="Curso"
-        onChange={(e) => setCurso(e.target.value)}
-      />
-      <Input
-        type="text"
-        value={ra}
-        placeholder="RA"
-        onChange={(e) => setRa(e.target.value)}
-      />
-      <Input
-        type="text"
-        value={endereco}
-        placeholder="Endereço"
-        onChange={(e) => setEndereco(e.target.value)}
-      />
-      <Input
-        type="text"
-        value={cep}
-        placeholder="CEP"
-        onChange={(e) => setCep(e.target.value)}
-      />
-      <Input
-        type="text"
-        value={telefone}
-        placeholder="Telefone"
-        onChange={(e) => setTelefone(e.target.value)}
-      />
-      <Input
-        type="text"
-        value={email}
-        placeholder="E-mail"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <Input
-        type="text"
-        value={profissao}
-        placeholder="Profissão"
-        onChange={(e) => setProfissao(e.target.value)}
-      />
-      <Input
-        type="text"
-        value={codigo_conselho}
-        placeholder="Codigo"
-        onChange={(e) => setCodigoConselho(e.target.value)}
-      />
-
-      <button onClick={handleAdd}>Enviar</button>
+      <Grid>
+        <Input
+          type="text"
+          width="100%"
+          value={nome}
+          placeholder="Nome completo"
+          onChange={(e) => setNome(e.target.value)}
+        />
+        <Input
+          type="text"
+          width="100%"
+          value={cpf}
+          placeholder="CPF"
+          onChange={(e) => setCpf(e.target.value)}
+        />
+        <Input
+          type="text"
+          width="100%"
+          value={curso}
+          placeholder="Curso"
+          onChange={(e) => setCurso(e.target.value)}
+        />
+        <Input
+          type="text"
+          width="100%"
+          value={ra}
+          placeholder="RA"
+          onChange={(e) => setRa(e.target.value)}
+        />
+        <Input
+          type="text"
+          width="100%"
+          value={endereco}
+          placeholder="Endereço"
+          onChange={(e) => setEndereco(e.target.value)}
+        />
+        <Input
+          type="text"
+          width="100%"
+          value={cep}
+          placeholder="CEP"
+          onChange={(e) => setCep(e.target.value)}
+        />
+        <Input
+          type="text"
+          width="100%"
+          value={telefone}
+          placeholder="Telefone"
+          onChange={(e) => setTelefone(e.target.value)}
+        />
+        <Input
+          type="text"
+          width="100%"
+          value={email}
+          placeholder="E-mail"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <Input
+          type="text"
+          width="100%"
+          value={profissao}
+          placeholder="Profissão"
+          onChange={(e) => setProfissao(e.target.value)}
+        />
+        <Input
+          type="text"
+          width="100%"
+          value={codigo_conselho}
+          placeholder="Codigo"
+          onChange={(e) => setCodigoConselho(e.target.value)}
+        />
+      </Grid>
+      <div>
+        <Button onClick={handleAdd}>Cadastrar</Button>
+      </div>
     </Container>
   );
 }
