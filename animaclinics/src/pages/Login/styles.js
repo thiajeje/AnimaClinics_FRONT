@@ -8,6 +8,14 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   background-color: blue;
+
+  .button-container{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    background-color: red;
+    width: 80%;
+  }
   `
 export const Grid = styled.div`
   display: grid;

@@ -73,6 +73,7 @@ function Login() {
           width="100%"
           value={cpf}
           placeholder="CPF"
+          mask={"999.999.999-99"}
           onChange={(e) => setCpf(e.target.value)}
         />
         <Input
@@ -92,13 +93,6 @@ function Login() {
         <Input
           type="text"
           width="100%"
-          value={endereco}
-          placeholder="Endereço"
-          onChange={(e) => setEndereco(e.target.value)}
-        />
-        <Input
-          type="text"
-          width="100%"
           value={cep}
           placeholder="CEP"
           onChange={(e) => setCep(e.target.value)}
@@ -106,8 +100,16 @@ function Login() {
         <Input
           type="text"
           width="100%"
+          value={endereco}
+          placeholder="Endereço"
+          onChange={(e) => setEndereco(e.target.value)}
+        />
+        <Input
+          type="text"
+          width="100%"
           value={telefone}
           placeholder="Telefone"
+          mask={"(99) 9999-9999"}
           onChange={(e) => setTelefone(e.target.value)}
         />
         <Input
@@ -141,7 +143,7 @@ function Login() {
           onChange={(e) => setCodigoConselho(e.target.value)}
         />
       </Grid>
-      <div>
+      <div className="button-container">
         <Button
           onClick={handleAdd}
           disabled={
