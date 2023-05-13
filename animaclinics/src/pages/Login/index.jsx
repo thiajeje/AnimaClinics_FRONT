@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Container, Grid } from "./styles";
-import { Button, Input } from "components";
+import { Button, Input, Select } from "components";
 
 function Login() {
   const [loading, setLoading] = useState(false);
@@ -46,6 +46,17 @@ function Login() {
     }
   };
 
+  const tipoProfissao = [
+    "Nutrição",
+    "Medicina",
+    "Farmácia",
+    "Fisioterapia",
+    "Odontologia",
+    "Biomedicina",
+    "Enfermagem",
+    "Fonoaudiologia",
+    "Estética e cosmética",
+  ];
   return (
     <Container>
       <h1>Cadastro de usuários</h1>
@@ -106,13 +117,22 @@ function Login() {
           placeholder="E-mail"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Input
+        <Select
           type="text"
           width="100%"
           value={profissao}
           placeholder="Profissão"
           onChange={(e) => setProfissao(e.target.value)}
-        />
+        >
+          <option value="" disabled>
+            Selecione a profissão
+          </option>
+          {tipoProfissao.map((item) => (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          ))}
+        </Select>
         <Input
           type="text"
           width="100%"
@@ -122,7 +142,25 @@ function Login() {
         />
       </Grid>
       <div>
-        <Button onClick={handleAdd}>Cadastrar</Button>
+        <Button
+          onClick={handleAdd}
+          disabled={
+            loading ||
+            !nome ||
+            !cpf ||
+            !curso ||
+            !ra ||
+            !endereco ||
+            !cep ||
+            !telefone ||
+            !email ||
+            !profissao ||
+            profissao === "" ||
+            !codigo_conselho
+          }
+        >
+          Cadastrar
+        </Button>
       </div>
     </Container>
   );

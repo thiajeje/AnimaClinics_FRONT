@@ -1,5 +1,10 @@
-export const primary = '#4B2D92';
-export const secondary = '#422787';
-export const midleGray = '#756CB6';
-export const white = '#E7E7E7'
-export const black = '#000000';
+export const primary = '#1D2527';
+export const secondary = '#0c3666';
+export const tertiary = '#8e0004'
+export const white = '#FFFFFF';
+export const success = '#2ecc71';
+export const error = '#e74c3c';
+export const darkGray = '#121212';
+export const middleGray = '#868686';
+export const lightGray = '#d1d2d4';
+export const lighterGray = '#fafafa';
