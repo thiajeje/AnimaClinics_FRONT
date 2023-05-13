@@ -33,12 +33,15 @@ function Login() {
         codigo_conselho,
       });
       setLoading(false);
-      toast.success("Veículo criado com sucesso", {
+      toast.success("Usuário criado com sucesso", {
         position: toast.POSITION.TOP_RIGHT,
         theme: "colored",
       });
     } catch (error) {
-      alert("erro na requisição");
+      toast.error("Não foi possível criar, tente mais tarde", {
+        position: toast.POSITION.TOP_RIGHT,
+        theme: "colored",
+      });
       setLoading(false);
     }
   };
