@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 100%;
+  width: 99%;
 `;
 
 export const StyledInput = styled.div`
@@ -29,7 +29,7 @@ export const StyledInput = styled.div`
   padding-left: 5px;
   padding-right: 5px;
   border-radius: ${(props) => props.radius || '5px'};
-  height: ${(props) => props.height || '30px'};
+  height: ${(props) => props.height || '45px'};
   width: ${(props) => props.width || '300px'};
   color: ${(props) => props.disabled && middleGray};
   select {

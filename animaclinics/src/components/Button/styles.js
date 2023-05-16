@@ -12,7 +12,7 @@ export const StyledButton = styled.button`
   cursor: pointer;
   transition: all ease-in-out 0.3s;
   font-size: ${(props) => props.fontSize || '15px'};
-  border-radius: 50px;
+  border-radius: 5px;
   height: ${(props) => props.height || '35px'};
   width: ${(props) => props.width || '180px'};
   color: ${(props) => (props.outlined ? primary : white)};

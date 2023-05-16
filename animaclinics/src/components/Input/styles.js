@@ -12,8 +12,8 @@ export const StyledInput = styled.div`
   font-size: 15px;
   padding-left: 2%;
   margin-bottom: 2%;
-  border-radius: ${(props) => props.radius || '10px'};
-  height: ${(props) => props.height || '35px'};
+  border-radius: ${(props) => props.radius || '5px'};
+  height: ${(props) => props.height || '45px'};
   width: ${(props) => props.width || '250px'};
 
   input {
