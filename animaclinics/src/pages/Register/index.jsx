@@ -18,6 +18,7 @@ function Register() {
   const [email, setEmail] = useState("");
   const [profissao, setProfissao] = useState("");
   const [codigo_conselho, setCodigoConselho] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleAdd = async () => {
     setLoading(true);
@@ -33,6 +34,7 @@ function Register() {
         email,
         profissao,
         codigo_conselho,
+        password
       });
       setLoading(false);
       setNome("");
@@ -45,6 +47,7 @@ function Register() {
       setEmail("");
       setProfissao("");
       setCodigoConselho("");
+      setPassword("")
       toast.success("Usuário criado com sucesso", {
         position: toast.POSITION.TOP_RIGHT,
         theme: "colored",
@@ -70,6 +73,7 @@ function Register() {
     "Fonoaudiologia",
     "Estética e cosmética",
   ];
+
   return (
     <Container>
       <h1>Cadastro de usuários</h1>
@@ -154,6 +158,13 @@ function Register() {
           value={codigo_conselho}
           placeholder="Codigo"
           onChange={(e) => setCodigoConselho(e.target.value)}
+        />
+        <Input
+          type="text"
+          width="100%"
+          value={password}
+          placeholder="Crie uma senha"
+          onChange={(e) => setPassword(e.target.value)}
         />
       </Grid>
       <div className="button-container">

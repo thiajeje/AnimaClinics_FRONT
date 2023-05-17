@@ -11,10 +11,10 @@ export const StyledButton = styled.button`
   outline: none;
   cursor: pointer;
   transition: all ease-in-out 0.3s;
-  font-size: ${(props) => props.fontSize || '15px'};
-  border-radius: 5px;
-  height: ${(props) => props.height || '35px'};
-  width: ${(props) => props.width || '180px'};
+  font-size: ${(props) => props.fontSize || '16px'};
+  border-radius: 10px;
+  height: ${(props) => props.height || '40px'};
+  width: ${(props) => props.width || '200px'};
   color: ${(props) => (props.outlined ? primary : white)};
 
 

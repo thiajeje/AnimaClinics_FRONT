@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Input, Button } from "components";
+import background from 'assets/background.svg'
 
 import {
   Container,
@@ -9,7 +10,6 @@ import {
   Form,
   ForgotText,
   Div,
-  Logo,
 } from "./styles";
 import { useHistory } from "react-router-dom";
 
@@ -24,20 +24,15 @@ const Login = () => {
       <LeftBox>
         <Form>
           <Title>Login</Title>
-          <Logo>{/* <img src={logobank} alt="" /> */}</Logo>
           <Div>
             <Input
-              width="100%"
-              label="E-mail"
-              placeholder="Type your e-mail"
+              placeholder="Insira seu e-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
 
             <Input
-              width="100%"
-              label="Password"
-              placeholder="Type your password"
+              placeholder="Insira sua senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               password
@@ -46,12 +41,17 @@ const Login = () => {
           </Div>
 
           <Button disabled={!email || !password}>Entrar</Button>
-          <ForgotText onClick={() => history.push("/cadastro")}>
+          <ForgotText style={{marginTop: '50px'}} onClick={() => history.push("/cadastro")}>
             Cadastre-se
+          </ForgotText>
+          <ForgotText onClick={() => history.push("/cadastro")}>
+            Redefinir senha
           </ForgotText>
         </Form>
       </LeftBox>
-      <RightBox></RightBox>
+      <RightBox>
+        <img className='imagem'src={background} alt="" />
+      </RightBox>
     </Container>
   );
 };

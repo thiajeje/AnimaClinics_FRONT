@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import { primary, midleGray, secondary } from 'styles/colorProvider';
+import { white } from 'styles/colorProvider';
 
 export const Container = styled.div`
   display: flex;
@@ -16,10 +16,10 @@ export const Container = styled.div`
 `;
 
 export const LeftBox = styled.div`
-  width: 65%;
+  width: 40%;
   height: 100%;
   background-size: cover;
-  background-color: blue;
+  background-color: ${white};
 
   @media (max-width: 1000px) {
     display: none;
@@ -31,9 +31,13 @@ export const RightBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 45%;
+  width: 60%;
   height: 100vh;
-  background-color: white;
+
+  .imagem{
+    width: 100%;
+    height: 100%;
+  }
 
   @media (max-width: 1000px) {
     width: 100%;  
@@ -50,63 +54,28 @@ export const Form = styled.form`
 `;
 
 export const Title = styled.h3`
-  font-size: 30px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
+  font-size: 56px;
+  font-weight: 400;
   color: black;
   text-align: center;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-
-  @media (max-width: 1000px) {
-    margin-top: 10px;
-  }
+  margin-bottom: 50px;
 `;
 
 export const Div = styled.div`
-  width: 50%;
-  justify-content: center;
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-
-  @media (max-width: 1000px) {
-    margin-top: 15px;
-    width: 80%;
-  }
-`;
-export const Hr = styled.hr`
-  width: 170px;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  margin: 10px 0 -15px 0;
-
-  @media (max-width: 1000px) {
-    margin-top: 15px;
-    width: 40%;
-  }
-`;
-
-export const Logo = styled.div`
-  width: 100%;
-  justify-content: center;
-  height: 150px;
-  text-align: center;
-
-  img{
-    width: 135px;
-    color: black;
-  }
-
-  @media (max-width: 1000px) {
-    width: 80%;
-  }
+  height: 130px;
+  margin-bottom: 25px;
 `;
 
 export const ForgotText = styled.a`
-  margin-top: 5%;
+  margin: 15px 0 0 0;
   color: black;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 400;
   cursor: pointer;
 
   :hover {

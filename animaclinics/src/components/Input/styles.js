@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { white } from 'styles/colorProvider';
+import { midlegray, white } from 'styles/colorProvider';
 
 export const StyledInput = styled.div`
   display: flex;
@@ -8,13 +8,13 @@ export const StyledInput = styled.div`
   align-items: center;
   background-color: ${white};
   border: none;
-  outline: none;
+  outline: 1px solid ${midlegray};
   font-size: 15px;
   padding-left: 2%;
   margin-bottom: 2%;
-  border-radius: ${(props) => props.radius || '5px'};
+  border-radius: ${(props) => props.radius || '10px'};
   height: ${(props) => props.height || '45px'};
-  width: ${(props) => props.width || '250px'};
+  width: ${(props) => props.width || '350px'};
 
   input {
     border: none;
