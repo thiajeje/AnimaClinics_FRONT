@@ -30,7 +30,6 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-
             <Input
               placeholder="Insira sua senha"
               value={password}
@@ -39,7 +38,6 @@ const Login = () => {
               type="password"
             />
           </Div>
-
           <Button disabled={!email || !password}>Entrar</Button>
           <ForgotText style={{marginTop: '50px'}} onClick={() => history.push("/cadastro")}>
             Cadastre-se

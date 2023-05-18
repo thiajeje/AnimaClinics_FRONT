@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Container, Grid } from "./styles";
+import { Container, Grid, Title } from "./styles";
 import { Button, Input, Select } from "components";
 import { useHistory } from "react-router-dom";
 
@@ -76,7 +76,7 @@ function Register() {
 
   return (
     <Container>
-      <h1>Cadastro de usuários</h1>
+      <Title>Cadastro de usuários</Title>
       <Grid>
         <Input
           type="text"
@@ -112,6 +112,7 @@ function Register() {
           width="100%"
           value={cep}
           placeholder="CEP"
+          mask={"99999-999"}
           onChange={(e) => setCep(e.target.value)}
         />
         <Input
@@ -160,16 +161,18 @@ function Register() {
           onChange={(e) => setCodigoConselho(e.target.value)}
         />
         <Input
-          type="text"
           width="100%"
+          placeholder="Nova senha"
           value={password}
-          placeholder="Crie uma senha"
           onChange={(e) => setPassword(e.target.value)}
+          password
+          type="password"
         />
       </Grid>
       <div className="button-container">
         <Button
           onClick={handleAdd}
+          outlined
           disabled={
             loading ||
             !nome ||

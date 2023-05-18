@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { primary, white } from 'styles/colorProvider';
+import { black, primary, white } from 'styles/colorProvider';
 
 export const StyledButton = styled.button`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => (props.outlined ? 'transparent' : primary)};
+  background-color: ${(props) => (props.outlined ? 'white' : primary)};
   border: ${(props) => (props.outlined ? `1px solid ${primary}` : 'none')};
   outline: none;
   cursor: pointer;
@@ -15,13 +15,13 @@ export const StyledButton = styled.button`
   border-radius: 10px;
   height: ${(props) => props.height || '40px'};
   width: ${(props) => props.width || '200px'};
-  color: ${(props) => (props.outlined ? primary : white)};
+  color: ${(props) => (props.outlined ? black : white)};
 
 
   &&:hover {
     opacity:${(props) => (props.outlined ? '1' : '0.7')};
-    background: ${(props) => (props.outlined ? primary : primary)};
-    color: ${(props) => (props.outlined ? white : white)};
+    background: ${(props) => (props.outlined ? white : primary)};
+    color: ${(props) => (props.outlined ? black : black)};
 ;
   }
   &&:disabled {

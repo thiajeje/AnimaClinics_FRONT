@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { success, error, white, lighterGray, middleGray, darkGray, primary, black } from 'styles/colorProvider';
+import { success, error, white, lighterGray, middleGray, darkGray, primary, black, midlegray } from 'styles/colorProvider';
 
 export const Container = styled.div`
   display: flex;
@@ -7,6 +7,7 @@ export const Container = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   width: 99%;
+  margin: -2.5px 0 0 0;
 `;
 
 export const StyledInput = styled.div`
@@ -17,7 +18,7 @@ export const StyledInput = styled.div`
   background-color: ${(props) => (props.disabled ? primary : white)};
   border: none;
   outline: none;
-  border: 1px solid ${black};
+  border: 1px solid ${midlegray};
   border-color: ${(props) => props.success && success};
   border-color: ${(props) => props.error && error};
   margin-left: ${(props) => props.marginHorizontal || '0px'};
@@ -28,7 +29,7 @@ export const StyledInput = styled.div`
   font-size: 15px;
   padding-left: 5px;
   padding-right: 5px;
-  border-radius: ${(props) => props.radius || '5px'};
+  border-radius: ${(props) => props.radius || '10px'};
   height: ${(props) => props.height || '45px'};
   width: ${(props) => props.width || '300px'};
   color: ${(props) => props.disabled && black};
