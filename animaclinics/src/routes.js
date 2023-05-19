@@ -12,7 +12,7 @@ import Anamnese from 'pages/Anamnese';
 const RoutesApp = () => (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/" component={Login} />
         <Route exact path="/cadastro" component={Register} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/agendamento" component={Agendament} />
