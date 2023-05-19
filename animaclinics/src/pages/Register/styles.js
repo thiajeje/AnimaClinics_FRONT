@@ -28,9 +28,11 @@ export const Grid = styled.div`
   gap: 15px 35px;
 `
 export const Title = styled.h3`
+  display: flex;
   font-size: 48px;
   font-weight: 500;
-  color: white;
   text-align: center;
+  color: white;
   margin: -110px 0 80px 0;
+  flex-direction: row;
 `;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { white } from 'styles/colorProvider';
+import background from 'assets/background.svg'
 
 export const Container = styled.div`
   display: flex;
@@ -18,7 +19,6 @@ export const Container = styled.div`
 export const LeftBox = styled.div`
   width: 40%;
   height: 100%;
-  background-size: cover;
   background-color: ${white};
 
   @media (max-width: 1000px) {
@@ -32,12 +32,10 @@ export const RightBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 60%;
-  height: 100vh;
-
-  .imagem{
-    width: 100%;
-    height: 100%;
-  }
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(${background});
 
   @media (max-width: 1000px) {
     width: 100%;  

@@ -4,9 +4,11 @@ import { toast } from "react-toastify";
 import { Container, Grid, Title } from "./styles";
 import { Button, Input, Select } from "components";
 import { useHistory } from "react-router-dom";
+import IconButton from "@material-ui/core/IconButton";
+import { MdChevronLeft } from "react-icons/md";
 
 function Register() {
-  const history = useHistory;
+  const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
@@ -34,7 +36,7 @@ function Register() {
         email,
         profissao,
         codigo_conselho,
-        password
+        password,
       });
       setLoading(false);
       setNome("");
@@ -47,8 +49,8 @@ function Register() {
       setEmail("");
       setProfissao("");
       setCodigoConselho("");
-      setPassword("")
-      toast.success("Usuário criado com sucesso", {
+      setPassword("");
+      toast.success("Usuário cadastrado com sucesso", {
         position: toast.POSITION.TOP_RIGHT,
         theme: "colored",
       });
@@ -76,7 +78,16 @@ function Register() {
 
   return (
     <Container>
-      <Title>Cadastro de usuários</Title>
+      <Title>
+        <IconButton
+          size="small"
+          style={{ marginRight: 15 }}
+          onClick={() => history.push("/")}
+        >
+          <MdChevronLeft color="white" size={24} />
+        </IconButton>
+        Cadastrar usuário
+      </Title>
       <Grid>
         <Input
           type="text"
@@ -141,7 +152,6 @@ function Register() {
           type="text"
           width="100%"
           value={profissao}
-          placeholder="Profissão"
           onChange={(e) => setProfissao(e.target.value)}
         >
           <option value="" disabled>

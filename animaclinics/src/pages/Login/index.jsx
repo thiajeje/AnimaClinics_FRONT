@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Input, Button } from "components";
-import background from 'assets/background.svg'
 
 import {
   Container,
@@ -38,8 +37,16 @@ const Login = () => {
               type="password"
             />
           </Div>
-          <Button disabled={!email || !password}>Entrar</Button>
-          <ForgotText style={{marginTop: '50px'}} onClick={() => history.push("/cadastro")}>
+          <Button
+            disabled={!email || !password}
+            onClick={history.push("/cadastro-paciente")}
+          >
+            Entrar
+          </Button>
+          <ForgotText
+            style={{ marginTop: "50px" }}
+            onClick={() => history.push("/cadastro")}
+          >
             Cadastre-se
           </ForgotText>
           <ForgotText onClick={() => history.push("/cadastro")}>
@@ -47,9 +54,7 @@ const Login = () => {
           </ForgotText>
         </Form>
       </LeftBox>
-      <RightBox>
-        <img className='imagem'src={background} alt="" />
-      </RightBox>
+      <RightBox />
     </Container>
   );
 };
