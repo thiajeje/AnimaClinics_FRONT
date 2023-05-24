@@ -39,7 +39,7 @@ const Login = () => {
           </Div>
           <Button
             disabled={!email || !password}
-            onClick={history.push("/cadastro-paciente")}
+            onClick={() =>history.push("/cadastro-paciente")}
           >
             Entrar
           </Button>
