@@ -20,7 +20,6 @@ const Login = ({ setIsLoggedIn }) => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    // Verifica se os dados do usuário estão presentes no localStorage
     const userData = localStorage.getItem("userData");
     if (userData) {
       setIsLoggedIn(true);
@@ -32,7 +31,7 @@ const Login = ({ setIsLoggedIn }) => {
     e.preventDefault();
 
     try {
-      const response = await api.post("usuarios/login", {
+      const response = await api.POST("usuarios/login", {
         email,
         senha: password,
       });
@@ -74,7 +73,6 @@ const Login = ({ setIsLoggedIn }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               password
-              type="password"
             />
           </Div>
           <Button disabled={!email || !password} onClick={handleLogin}>

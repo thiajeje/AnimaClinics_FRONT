@@ -179,7 +179,6 @@ function Register() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           password
-          type="password"
         />
       </Grid>
       <div className="button-container">
