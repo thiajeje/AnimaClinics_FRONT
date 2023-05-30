@@ -24,6 +24,11 @@ export default function PermanentDrawerLeft() {
   const location = useLocation();
   const path = location.pathname;
 
+  const handleLogout = () => {
+    localStorage.removeItem("userData");
+    history.push("/");
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ display: "flex" }}>
@@ -83,7 +88,7 @@ export default function PermanentDrawerLeft() {
               </Title>
               <Title
                 className={path === "/" && "select"}
-                onClick={() => history.push("/")}
+                onClick={handleLogout}
               >
                 Sair
               </Title>

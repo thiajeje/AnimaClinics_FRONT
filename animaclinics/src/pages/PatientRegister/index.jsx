@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Header, Input, Select, Button } from "components";
 import { Container, Grid } from "./styles";
-import axios from "axios";
+import api from "api";
 import { toast } from "react-toastify";
 
 function PatientRegister() {
@@ -52,16 +52,20 @@ function PatientRegister() {
   const handleAdd = async () => {
     setLoading(true);
     try {
-      await axios.post(`http://localhost:8080/animaclinics/pacientes`, {
-        nome,
-        cpf,
-        telefone,
-        endereco,
-        cep,
-        email,
-        data_nascimento: dataNascimento,
-        convenio,
-        sexo,
+      await api({
+        method: "POST",
+        url: `/pacientes`,
+        data: {
+          nome,
+          cpf,
+          telefone,
+          endereco,
+          cep,
+          email,
+          data_nascimento: dataNascimento,
+          convenio,
+          sexo,
+        },
       });
       setLoading(false);
       setNome("");
@@ -70,7 +74,9 @@ function PatientRegister() {
       setEndereco("");
       setCep("");
       setEmail("");
-
+      setDataNascimento("");
+      setConvenio("");
+      setSexo("");
       toast.success("Usuário cadastrado com sucesso", {
         position: toast.POSITION.TOP_RIGHT,
         theme: "colored",

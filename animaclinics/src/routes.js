@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Login from './pages/Login/index';
 import Register from './pages/Register';
@@ -8,18 +8,38 @@ import Agendament from 'pages/Agendament';
 import PatientRegister from 'pages/PatientRegister';
 import Anamnese from 'pages/Anamnese';
 
+const RoutesApp = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-const RoutesApp = () => (
+  const PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={(props) =>
+        isLoggedIn ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/" />
+        )
+      }
+    />
+  );
+
+  return (
     <BrowserRouter>
       <Switch>
+        <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        <PrivateRoute exact path="/agendamento" component={Agendament} />
+        <PrivateRoute exact path="/anamnese" component={Anamnese} />
+        <PrivateRoute
+          exact
+          path="/cadastro-paciente"
+          component={PatientRegister}
+        />
+        <Route exact path="/" component={() => <Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route exact path="/cadastro" component={Register} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/agendamento" component={Agendament} />
-        <Route exact path="/anamnese" component={Anamnese} />
-        <Route exact path="/cadastro-paciente" component={PatientRegister} />
-        <Route exact path="/" component={Login} />
       </Switch>
-  </BrowserRouter>
-);
+    </BrowserRouter>
+  );
+};
 
 export default RoutesApp;

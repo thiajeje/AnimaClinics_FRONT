@@ -25,19 +25,23 @@ function Register() {
   const handleAdd = async () => {
     setLoading(true);
     try {
-      await axios.post(`http://localhost:8080/animaclinics/usuarios`, {
-        nome,
-        cpf,
-        telefone,
-        curso,
-        ra,
-        endereco,
-        cep,
-        email,
-        profissao,
-        codigo_conselho,
-        password,
-      });
+      const response = await axios.post(
+        `http://localhost:8080/animaclinics/usuarios`,
+        {
+          nome,
+          cpf,
+          telefone,
+          curso,
+          ra,
+          endereco,
+          cep,
+          email,
+          profissao,
+          codigo_conselho,
+          senha: password,
+        }
+      );
+      console.log(response);
       setLoading(false);
       setNome("");
       setCpf("");
@@ -49,7 +53,6 @@ function Register() {
       setEmail("");
       setProfissao("");
       setCodigoConselho("");
-      setPassword("");
       toast.success("Usuário cadastrado com sucesso", {
         position: toast.POSITION.TOP_RIGHT,
         theme: "colored",
