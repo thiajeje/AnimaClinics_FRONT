@@ -31,7 +31,7 @@ const Login = ({ setIsLoggedIn }) => {
     e.preventDefault();
 
     try {
-      const response = await api.POST("usuarios/login", {
+      const response = await api.post("usuarios/login", {
         email,
         senha: password,
       });

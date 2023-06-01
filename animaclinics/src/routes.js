@@ -27,8 +27,11 @@ const RoutesApp = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <PrivateRoute exact path="/dashboard" component={Dashboard} />
-        <PrivateRoute exact path="/agendamento" component={Agendament} />
+      <PrivateRoute
+          exact
+          path="/dashboard"
+          render={() => <Dashboard setIsLoggedIn={setIsLoggedIn} />}
+        />        <PrivateRoute exact path="/agendamento" component={Agendament} />
         <PrivateRoute exact path="/anamnese" component={Anamnese} />
         <PrivateRoute
           exact
