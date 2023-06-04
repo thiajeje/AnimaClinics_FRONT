@@ -8,14 +8,3 @@ export const lightgray = '#E5E5E5'
 export const success = '#2ecc71';
 export const error = '#e74c3c';
 export const midlegray = '#8B8B8B';
-
-// export const primary = '#1D2527';
-// export const secondary = '#0c3666';
-// export const tertiary = '#8e0004'
-// export const white = '#FFFFFF';
-// export const success = '#2ecc71';
-// export const error = '#e74c3c';
-// export const darkGray = '#121212';
-// export const middleGray = '#868686';
-// export const lightGray = '#d1d2d4';
-// export const lighterGray = '#fafafa';

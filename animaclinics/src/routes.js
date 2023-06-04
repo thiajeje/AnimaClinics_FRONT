@@ -16,7 +16,7 @@ const RoutesApp = () => {
       {...rest}
       render={(props) =>
         isLoggedIn ? (
-          <Component {...props} />
+          <Component {...props} userData={JSON.parse(localStorage.getItem("userData"))} />
         ) : (
           <Redirect to="/" />
         )
@@ -27,11 +27,12 @@ const RoutesApp = () => {
   return (
     <BrowserRouter>
       <Switch>
-      <PrivateRoute
+        <PrivateRoute
           exact
           path="/dashboard"
-          render={() => <Dashboard setIsLoggedIn={setIsLoggedIn} />}
-        />        <PrivateRoute exact path="/agendamento" component={Agendament} />
+          component={Dashboard}
+        />
+        <PrivateRoute exact path="/agendamento" component={Agendament} />
         <PrivateRoute exact path="/anamnese" component={Anamnese} />
         <PrivateRoute
           exact
