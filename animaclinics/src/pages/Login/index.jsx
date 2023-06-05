@@ -64,7 +64,13 @@ const Login = ({ setIsLoggedIn }) => {
           <Title>Login</Title>
           <Div>
             <Input placeholder="Insira seu e-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <Input placeholder="Insira sua senha" value={password} onChange={(e) => setPassword(e.target.value)} password />
+            <Input
+              placeholder="Digite sua senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              password
+              type="password"
+            />
           </Div>
           <Button disabled={!email || !password} onClick={handleLogin}>
             Entrar

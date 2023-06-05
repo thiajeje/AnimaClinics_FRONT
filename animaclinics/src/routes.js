@@ -5,6 +5,7 @@ import Login from './pages/Login/index';
 import Register from './pages/Register';
 import Dashboard from 'pages/Dashboard';
 import Agendament from 'pages/Agendament';
+import ListAgendament from 'pages/ListAgendament';
 import PatientRegister from 'pages/PatientRegister';
 import Anamnese from 'pages/Anamnese';
 
@@ -33,6 +34,7 @@ const RoutesApp = () => {
           component={Dashboard}
         />
         <PrivateRoute exact path="/agendamento" component={Agendament} />
+        <PrivateRoute exact path="/lista-agendamento" component={ListAgendament} />
         <PrivateRoute exact path="/anamnese" component={Anamnese} />
         <PrivateRoute
           exact

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { blue, midlegray, white } from "styles/colorProvider";
+import { blue, middleGray, white } from "styles/colorProvider";
 
 export const Container = styled.div`
   display: flex;
@@ -68,7 +68,14 @@ export const Title = styled.div`
   }
 
   span{
-    color: ${midlegray};
+    color: ${middleGray};
     font-weight: 500;
   }
+`
+export const ButtonArea = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 `

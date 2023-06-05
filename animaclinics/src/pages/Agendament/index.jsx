@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import styled from 'styled-components';
-import { Container, ContentArea, ClaimOption, Title } from './styles';
+import { Container, ContentArea, ClaimOption, Title, ButtonArea } from './styles';
 import { Header, Button } from 'components';
 import api from 'api';
 import { toast } from 'react-toastify';
@@ -18,11 +19,15 @@ const StyledCalendar = styled(FullCalendar)`
 `;
 
 function Agendament() {
+  const history = useHistory();
   const [userData, setUserData] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedHours, setSelectedHours] = useState(null);
   const [selectedDoctor, setSelectedDoctor] = useState(null);
+  const [selectedPatient, setSelectedPatient] = useState(null);
   const [doctor, setDoctor] = useState([]);
+  // const [agendament, setAgendament] = useState([]);
+  const [patient, setPatient] = useState([]);
   const [steps, setSteps] = useState(1);
   const calendarRef = useRef(null);
   const hour08 = useRef(null);
@@ -44,8 +49,50 @@ function Agendament() {
     setDoctor(resp.data);
   };
 
+  const fetchPatient = async () => {
+    const resp = await api({
+      method: 'GET',
+      url: `/pacientes`,
+    });
+    setPatient(resp.data);
+  };
+
+  const handleAgendament = async () => {
+    // setLoading(true);
+    try {
+      const formattedDate = format(selectedDate, 'dd-MM-yyyy');
+      await api({
+        method: 'POST',
+        url: `/agendamentos`,
+        data: {
+          id_criador: userData.id,
+          id_medico: selectedDoctor.id,
+          id_paciente: selectedPatient.id,
+          data: formattedDate,
+          hora: selectedHours,
+          status: 'Aguardando consulta',
+        },
+      });
+      setSelectedDate(null);
+      setSelectedHours(null);
+      setSelectedPatient(null);
+      setSelectedDoctor(null);
+      setSteps(1);
+      toast.success('Agendamento feito!', {
+        position: toast.POSITION.TOP_RIGHT,
+        theme: 'colored',
+      });
+    } catch (error) {
+      toast.error('Não foi possível agendar, tente mais tarde', {
+        position: toast.POSITION.TOP_RIGHT,
+        theme: 'colored',
+      });
+    }
+  };
+
   useEffect(() => {
     fetchDoctor();
+    fetchPatient();
     const storedUserData = Cookies.get('userData');
     if (storedUserData) {
       try {
@@ -95,35 +142,6 @@ function Agendament() {
     };
   }, []);
 
-  const handleAgendament = async () => {
-    // setLoading(true);
-    try {
-      const formattedDate = format(selectedDate, 'dd-MM-yyyy');
-      await api({
-        method: 'POST',
-        url: `/agendamentos`,
-        data: {
-          id_criador: userData.id,
-          id_medico: selectedDoctor.id,
-          data: formattedDate,
-          hora: selectedHours,
-        },
-      });
-      setSelectedDate(null);
-      setSelectedHours(null);
-      setSteps(1);
-      toast.success('Agendamento feito!', {
-        position: toast.POSITION.TOP_RIGHT,
-        theme: 'colored',
-      });
-    } catch (error) {
-      toast.error('Não foi possível agendar, tente mais tarde', {
-        position: toast.POSITION.TOP_RIGHT,
-        theme: 'colored',
-      });
-    }
-  };
-
   const handleDateClick = (arg) => {
     setSelectedDate(arg.date);
   };
@@ -148,30 +166,79 @@ function Agendament() {
         {steps === 1 && (
           <>
             <Title>
-              <h3>Selecione o profissional desejado com quem deseja realizar a consulta</h3>
+              <h3>Selecione a opção desejada...</h3>
+            </Title>
+            <ButtonArea>
+              <Button outlined style={{ marginRight: '25px' }} onClick={() => history.push('/lista-agendamento')}>
+                Buscar agendamento
+              </Button>
+              <Button onClick={() => setSteps(2)}>Cadastrar agendamento</Button>
+            </ButtonArea>
+          </>
+        )}
+        {steps === 2 && (
+          <>
+            <Title style={{ margin: '0' }}>
+              <h3>Selecione o paciente que deseja realizar a consulta</h3>
             </Title>
             <Autocomplete
-              options={doctor}
+              options={patient}
               sx={{ width: '100%' }}
               style={{ margin: '20px 0 5px 0' }}
-              value={selectedDoctor}
+              value={selectedPatient}
               getOptionLabel={(option) => option?.nome}
               onChange={(event, newValue) => {
-                setSelectedDoctor(newValue);
+                setSelectedPatient(newValue);
               }}
               renderOption={(props, option) => (
                 <>
                   <p style={{ paddingLeft: 10, cursor: 'pointer' }} {...props} className="title">
-                    {option?.nome} - {option?.profissao}
+                    {option?.nome} - {option?.cpf}
                   </p>
                 </>
               )}
-              renderInput={(params) => <TextField {...params} label="Selecione o parceiro" placeholder="Digite para buscar..." />}
+              renderInput={(params) => <TextField {...params} label="Selecione o paciente" placeholder="Digite para buscar..." />}
             />
-            {selectedDoctor && <Button onClick={() => setSteps(2)}>Prosseguir</Button>}
+            {selectedPatient ? (
+              <>
+                <Title style={{ margin: '25px 0 0 0' }}>
+                  <h3>Selecione o profissional desejado com quem deseja realizar a consulta</h3>
+                </Title>
+                <Autocomplete
+                  options={doctor}
+                  sx={{ width: '100%' }}
+                  style={{ margin: '20px 0 5px 0' }}
+                  value={selectedDoctor}
+                  getOptionLabel={(option) => option?.nome}
+                  onChange={(event, newValue) => {
+                    setSelectedDoctor(newValue);
+                  }}
+                  renderOption={(props, option) => (
+                    <>
+                      <p style={{ paddingLeft: 10, cursor: 'pointer' }} {...props} className="title">
+                        {option?.nome} - {option?.profissao}
+                      </p>
+                    </>
+                  )}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Selecione o médico" placeholder="Digite para buscar..." />
+                  )}
+                />{' '}
+              </>
+            ) : null}
+            <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-end', margin: '50px 0 0 0' }}>
+              <Button outlined onClick={() => goBack(1)}>
+                Voltar
+              </Button>
+              {selectedDoctor && selectedPatient && (
+                <Button style={{ marginLeft: '15px' }} onClick={() => setSteps(3)}>
+                  Prosseguir
+                </Button>
+              )}
+            </div>
           </>
         )}
-        {steps === 2 && (
+        {steps === 3 && (
           <>
             <Title>
               <h3>
@@ -307,9 +374,17 @@ function Agendament() {
                   </ClaimOption>
                 </div>
               )}
-
-              <button onClick={handleAgendament}>Marcar agendamento</button>
             </ContentArea>
+            <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-end', margin: '50px 0 0 0' }}>
+              <Button outlined onClick={() => goBack(2)}>
+                Voltar
+              </Button>
+              {selectedDate && selectedHours && (
+                <Button style={{ marginLeft: '15px' }} onClick={handleAgendament}>
+                  Cadastrar
+                </Button>
+              )}
+            </div>{' '}
           </>
         )}
       </Container>

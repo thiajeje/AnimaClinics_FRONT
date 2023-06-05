@@ -118,12 +118,15 @@ export default function PermanentDrawerLeft() {
                 Dashboard
               </Title>
               <Title className={path === '/cadastro-paciente' && 'select'} onClick={() => history.push('/cadastro-paciente')}>
-                Cadastro paciente
+                Cadastrar paciente
               </Title>
               <Title className={path === '/anamnese' && 'select'} onClick={() => history.push('/anamnese')}>
                 Anamnese
               </Title>
-              <Title className={path === '/agendamento' && 'select'} onClick={() => history.push('/agendamento')}>
+              <Title
+                className={(path === '/agendamento' && 'select') || (path === '/lista-agendamento' && 'select')}
+                onClick={() => history.push('/agendamento')}
+              >
                 Agendamento
               </Title>
               <Title className={path === '/' && 'select'} onClick={handleLogout}>

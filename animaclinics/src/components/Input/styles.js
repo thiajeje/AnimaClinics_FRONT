@@ -1,30 +1,42 @@
 import styled from 'styled-components';
-import { midlegray, white } from 'styles/colorProvider';
+import { success, error, white, lighterGray, middleGray } from 'styles/colorProvider';
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: ${(props) => props.width || '100%'};
+`;
 
 export const StyledInput = styled.div`
   display: flex;
   flex-direction: row;
-  text-align: flex-start;
+  justify-content: flex-start;
   align-items: center;
-  background-color: ${white};
+  background-color: ${(props) => (props.disabled ? lighterGray : white)};
   border: none;
-  outline: 1px solid ${midlegray};
+  outline: none;
+  border: 1px solid ${middleGray};
+  border-color: ${(props) => props.success && success};
+  border-color: ${(props) => props.error && error};
+  margin-left: ${(props) => props.marginHorizontal || '0px'};
+  margin-right: ${(props) => props.marginRight || '0px'};
+  margin-top: ${(props) => props.marginVertical || '0px'};
+  margin-bottom: ${(props) => props.marginVertical || '0px'};
+  margin-bottom: 1%;
   font-size: 15px;
-  padding-left: 2%;
-  margin-bottom: 2%;
+  padding-left: 5px;
+  padding-right: 5px;
   border-radius: ${(props) => props.radius || '10px'};
-  height: ${(props) => props.height || '45px'};
+  height: ${(props) => props.height || '40px'};
   width: ${(props) => props.width || '350px'};
-
+  color: ${(props) => props.disabled && middleGray};
   input {
     border: none;
     height: 85%;
     width: 80%;
-    background: ${white};
     outline: none;
-    &&:focus {
-      color: #ffc82b;
-    }
   }
   div {
     display: flex;
@@ -36,7 +48,7 @@ export const StyledInput = styled.div`
     width: 10%;
     width: ${(props) => (props.icon ? '10%' : '7px')};
     background-color: transparent;
-    color: #8b8b8b;
+    color: ${middleGray};
   }
 
   @media (max-width: 1000px) {

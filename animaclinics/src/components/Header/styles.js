@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { midlegray, white, black } from 'styles/colorProvider';
+import { middleGray, white, black } from 'styles/colorProvider';
 
 export const ContentArea = styled.div`
   width: 100%;
@@ -61,7 +61,7 @@ export const Title = styled.h1`
   transition: all ease-in-out 0.2s;
 
   :hover{
-    color: ${midlegray};
+    color: ${middleGray};
   }
 `;
 
