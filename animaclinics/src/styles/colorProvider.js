@@ -7,4 +7,5 @@ export const lightblue = '#BDD2E6'
 export const lighterGray = '#E5E5E5'
 export const success = '#2ecc71';
 export const error = '#e74c3c';
+export const warn = '#F1C40F';
 export const middleGray = '#8B8B8B';

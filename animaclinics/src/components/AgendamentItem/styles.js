@@ -80,6 +80,6 @@ export const Title = styled.h3`
 
 export const Subtitle = styled.p`
   font-size: 14px;
-  color: ${middleGray};
+  color: ${(props) => props.color || middleGray};
   margin: 0;
 `;

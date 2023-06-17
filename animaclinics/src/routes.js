@@ -34,6 +34,7 @@ const RoutesApp = () => {
           component={Dashboard}
         />
         <PrivateRoute exact path="/agendamento" component={Agendament} />
+        <PrivateRoute exact path="/agendamento/:id" component={Agendament} />
         <PrivateRoute exact path="/lista-agendamento" component={ListAgendament} />
         <PrivateRoute exact path="/anamnese" component={Anamnese} />
         <PrivateRoute

@@ -60,19 +60,23 @@ function Agendament() {
   const handleAgendament = async () => {
     // setLoading(true);
     try {
-      const formattedDate = format(selectedDate, 'dd-MM-yyyy');
-      await api({
+      const formattedDate = format(selectedDate, 'yyyy-MM-dd');
+      const response = await api({
         method: 'POST',
         url: `/agendamentos`,
         data: {
           id_criador: userData.id,
-          id_medico: selectedDoctor.id,
-          id_paciente: selectedPatient.id,
-          data: formattedDate,
-          hora: selectedHours,
+          usuario: {
+            id: selectedDoctor.id,
+          },
+          paciente: {
+            id: selectedPatient.id,
+          },
+          dataHora: `${formattedDate} ${selectedHours}:00`,
           status: 'Aguardando consulta',
         },
       });
+      console.log(response);
       setSelectedDate(null);
       setSelectedHours(null);
       setSelectedPatient(null);
