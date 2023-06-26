@@ -11,12 +11,12 @@ function ListAgendament() {
   const [statusFilter, setStatusFilter] = useState('');
 
   const fetchAgendament = async () => {
-    const resp = await api({
-      method: 'GET',
-      url: '/agendamentos',
-    });
-    console.log(resp.data);
-    setAgendament(resp.data);
+    try {
+      const resp = await api.get('/agendamentos');
+      setAgendament(resp.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
